@@ -1,13 +1,16 @@
 # 👔 DripWear — AI-Powered Fashion & Virtual Wardrobe OS
 
+[![Live Demo](https://img.shields.io/badge/Live%20Demo-drip--wear.netlify.app-brightgreen?style=for-the-badge&logo=netlify)](https://drip-wear.netlify.app/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-red.svg)](LICENSE)
 [![Frontend: React + Vite](https://img.shields.io/badge/Frontend-React%20%7C%20Vite%20%7C%20Tailwind-blue)](frontend)
 [![Backend: FastAPI + Python](https://img.shields.io/badge/Backend-FastAPI%20%7C%20Python%203.12-green)](backend)
 [![Database: PostgreSQL](https://img.shields.io/badge/Database-PostgreSQL-blue.svg)](backend)
-[![Auth: Firebase](https://img.shields.io/badge/Auth-Firebase%20Authentication-orange.svg)](https://firebase.google.com/)
 
 > **Form is Temporary. Drip is Permanent.**  
 > **DripWear** is an enterprise-grade digital wardrobe operating system and AI fashion assistant. Digitization of physical clothing, AI background removal, automated garment tagging, personalized outfit building, weather-aware recommendations, and cost-per-wear analytics — all powered by a production-ready PostgreSQL and Firebase multi-user infrastructure.
+
+### 🌐 Live Production Application
+🔗 **[https://drip-wear.netlify.app/](https://drip-wear.netlify.app/)**
 
 ---
 
@@ -43,6 +46,7 @@
 
 | Layer | Technologies Used |
 |---|---|
+| **Live App** | [https://drip-wear.netlify.app/](https://drip-wear.netlify.app/) |
 | **Frontend UI** | React 18, Vite, TypeScript, TailwindCSS, Framer Motion, Lucide Icons, Zustand (State Management) |
 | **Backend API** | Python 3.12, FastAPI, SQLAlchemy 2.0, Pydantic V2, Uvicorn |
 | **Database** | PostgreSQL (Production), SQLite (Local Fallback option) |
@@ -176,35 +180,11 @@ Open `http://localhost:5173` in your browser.
 
 ---
 
-## 🌐 Netlify Deployment Guide
+## 🌐 Live Netlify Deployment
 
-### Why "Page Not Found" (404) Happens on Single Page Apps (SPAs)
-Single Page Applications using client-side routing (React Router) require all route paths (e.g., `/dashboard`, `/wardrobe`, `/auth`) to be rewritten to `/index.html` by Netlify's web server.
-
-### Solutions Included
-1. **`frontend/public/_redirects`**:
-   ```
-   /*    /index.html   200
-   ```
-2. **`netlify.toml`** (Repository Root):
-   ```toml
-   [build]
-     base = "frontend"
-     publish = "dist"
-     command = "npm run build"
-
-   [[redirects]]
-     from = "/*"
-     to = "/index.html"
-     status = 200
-   ```
-
-### Deployment Configuration on Netlify Dashboard
-- **Repository**: `https://github.com/Uday-Bhoi/DRIP-WEAR.git`
-- **Base Directory**: `frontend`
-- **Build Command**: `npm run build`
-- **Publish Directory**: `frontend/dist`
-- **Environment Variables**: Add your `VITE_FIREBASE_*` and `VITE_API_BASE_URL` keys in Netlify Site Settings.
+- **Live URL**: [https://drip-wear.netlify.app/](https://drip-wear.netlify.app/)
+- **Build Settings**: `npm run build` inside `frontend/`
+- **SPA Rewrites**: Handled via `frontend/public/_redirects` (`/* /index.html 200`) and `netlify.toml`.
 
 ---
 
