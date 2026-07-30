@@ -1,23 +1,23 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { ArrowRight, Mail } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 
 export function LandingFooter() {
   const navigate = useNavigate();
 
   return (
-    <footer className="bg-slate-950 text-white pt-20 pb-12 px-8 font-sans">
+    <footer className="bg-slate-950 text-white pt-12 sm:pt-20 pb-12 px-4 sm:px-8 font-sans">
       {/* Top Banner Marquee */}
-      <div className="border-b border-slate-800 pb-12 mb-16 overflow-hidden">
-        <p className="text-xs font-mono tracking-widest text-[#F69D39] uppercase text-center">
+      <div className="border-b border-slate-800 pb-8 sm:pb-12 mb-12 sm:mb-16 overflow-hidden">
+        <p className="text-[10px] sm:text-xs font-mono tracking-widest text-[#F69D39] uppercase text-center">
           WEAR. TRACK. PLAN. STYLE. CREATE. REWEAR. INVEST. RESELL. DONATE. REPAIR.
         </p>
       </div>
 
-      <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
+      <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-12 mb-12 sm:mb-16">
         {/* Brand & Newsletter Column */}
         <div className="space-y-6">
-          <h3 className="text-3xl font-extrabold tracking-tight">DRIPWEAR</h3>
+          <h3 className="text-2xl sm:text-3xl font-extrabold tracking-tight">DRIPWEAR</h3>
           <p className="text-xs text-slate-400 leading-relaxed font-sans">
             Form is Temporary. Drip is Permanent. AI-powered Virtual Wardrobe and Personal Fashion Assistant.
           </p>
@@ -32,7 +32,7 @@ export function LandingFooter() {
                 placeholder="your@email.com"
                 className="bg-slate-900 border border-slate-800 rounded-xl px-4 py-2.5 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-[#D92243] flex-1"
               />
-              <button className="bg-[#D92243] hover:bg-[#c01c39] text-white p-2.5 rounded-xl transition">
+              <button className="bg-[#D92243] hover:bg-[#c01c39] text-white p-2.5 rounded-xl transition cursor-pointer">
                 <ArrowRight className="w-4 h-4" />
               </button>
             </div>
@@ -56,9 +56,9 @@ export function LandingFooter() {
           <h4 className="text-xs font-mono uppercase tracking-widest text-[#F69D39] mb-4">For You</h4>
           <ul className="space-y-3 text-xs font-mono uppercase text-slate-400">
             <li><a href="#how-it-works" className="hover:text-white transition">How It Works</a></li>
-            <li><button onClick={() => navigate('/wardrobe')} className="hover:text-white transition">Virtual Wardrobe</button></li>
-            <li><button onClick={() => navigate('/builder')} className="hover:text-white transition">Outfit Builder</button></li>
-            <li><button onClick={() => navigate('/analytics')} className="hover:text-white transition">Style Analytics</button></li>
+            <li><button onClick={() => navigate('/wardrobe')} className="hover:text-white transition cursor-pointer">Virtual Wardrobe</button></li>
+            <li><button onClick={() => navigate('/builder')} className="hover:text-white transition cursor-pointer">Outfit Builder</button></li>
+            <li><button onClick={() => navigate('/analytics')} className="hover:text-white transition cursor-pointer">Style Analytics</button></li>
           </ul>
         </div>
 
@@ -74,7 +74,7 @@ export function LandingFooter() {
         </div>
       </div>
 
-      <div className="max-w-7xl mx-auto border-t border-slate-900 pt-8 flex flex-col md:flex-row justify-between items-center text-xs text-slate-500 font-mono">
+      <div className="max-w-7xl mx-auto border-t border-slate-900 pt-8 flex flex-col sm:flex-row justify-between items-center text-[11px] text-slate-500 font-mono gap-4 text-center sm:text-left">
         <p>© 2026 DripWear Inc. Form is Temporary. Drip is Permanent.</p>
         <p>Built with React 19, Vite, and Tailwind CSS.</p>
       </div>

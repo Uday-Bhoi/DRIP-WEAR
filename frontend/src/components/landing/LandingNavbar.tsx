@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Search, User, Shield, Bookmark, LogOut, ChevronDown } from 'lucide-react';
+import { Search, User, Shield, Bookmark, LogOut, ChevronDown, Menu, X } from 'lucide-react';
 import { useAppStore } from '../../theme/store';
 import { Button } from '../ui/Button';
 
@@ -13,37 +13,41 @@ export function LandingNavbar({ onSearchClick }: LandingNavbarProps) {
   const navigate = useNavigate();
   const { isAuthenticated, user, logout } = useAppStore();
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-50 bg-[#FFF5E5]/95 backdrop-blur-md border-b border-[#E0C375]/40 py-6 px-8 flex flex-col items-center gap-4">
-      {/* Centered Full-Width Brand Title */}
-      <div 
-        onClick={() => navigate('/')} 
-        className="cursor-pointer text-4xl md:text-5xl font-black tracking-tight text-slate-900 font-sans text-center hover:opacity-90 transition"
-      >
-        DRIPWEAR
-      </div>
+    <header className="sticky top-0 z-50 bg-[#FFF5E5]/95 backdrop-blur-md border-b border-[#E0C375]/40 py-4 md:py-6 px-4 md:px-8 flex flex-col items-center gap-3">
+      {/* Top Header Row */}
+      <div className="w-full max-w-7xl flex items-center justify-between">
+        {/* Brand Title */}
+        <div 
+          onClick={() => navigate('/')} 
+          className="cursor-pointer text-3xl md:text-5xl font-black tracking-tight text-slate-900 font-sans hover:opacity-90 transition"
+        >
+          DRIPWEAR
+        </div>
 
-      {/* Horizontal Sub-Navigation Links & Actions Header Bar */}
-      <div className="w-full max-w-7xl flex justify-between items-center pt-1 border-t border-[#E0C375]/20">
-        {/* Editorial Sub-links */}
-        <nav className="flex items-center gap-6 text-xs font-bold uppercase tracking-widest text-slate-700 font-mono">
-          <a href="#about-us" className="hover:text-[#D92243] transition">About Us</a>
-          <span className="text-slate-300">•</span>
-          <a href="#how-it-works" className="hover:text-[#D92243] transition">How It Works</a>
-          <span className="text-slate-300">•</span>
-          <a href="#faq" className="hover:text-[#D92243] transition">FAQ</a>
-          <span className="text-slate-300">•</span>
-          <a href="#thoughts" className="hover:text-[#D92243] transition">Thoughts</a>
-          <span className="text-slate-300">•</span>
-          <a href="#contact" className="hover:text-[#D92243] transition">Contact Us</a>
-        </nav>
-
-        {/* Right Actions: Search & Profile Avatar Menu */}
-        <div className="flex items-center gap-4">
+        {/* Mobile Hamburger Toggle Button */}
+        <div className="flex items-center gap-2 md:hidden">
           <button
             onClick={onSearchClick}
-            className="flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white border border-[#E0C375]/50 text-slate-700 hover:text-[#D92243] hover:bg-[#FCE7C8] transition text-xs font-mono font-bold"
+            className="p-2 rounded-full bg-white border border-[#E0C375]/50 text-slate-700 hover:text-[#D92243]"
+          >
+            <Search className="w-4 h-4" />
+          </button>
+          <button
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            className="p-2 text-slate-800 hover:text-[#D92243] transition"
+          >
+            {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+          </button>
+        </div>
+
+        {/* Desktop Header Actions: Search & Profile Avatar Menu */}
+        <div className="hidden md:flex items-center gap-4">
+          <button
+            onClick={onSearchClick}
+            className="flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white border border-[#E0C375]/50 text-slate-700 hover:text-[#D92243] hover:bg-[#FCE7C8] transition text-xs font-mono font-bold cursor-pointer"
           >
             <Search className="w-3.5 h-3.5" /> Search
           </button>
@@ -52,7 +56,7 @@ export function LandingNavbar({ onSearchClick }: LandingNavbarProps) {
             <div className="relative">
               <button
                 onClick={() => setIsDropdownOpen(!isDropdownOpen)}
-                className="flex items-center gap-2 p-1 pl-2.5 rounded-full bg-white border border-[#E0C375]/60 hover:border-[#D92243] transition shadow-xs"
+                className="flex items-center gap-2 p-1 pl-2.5 rounded-full bg-white border border-[#E0C375]/60 hover:border-[#D92243] transition shadow-xs cursor-pointer"
               >
                 <img src={user.avatarUrl} alt={user.name} className="w-6 h-6 rounded-full object-cover border border-slate-200" />
                 <span className="text-xs font-bold text-slate-900 font-mono">{user.name}</span>
@@ -120,6 +124,53 @@ export function LandingNavbar({ onSearchClick }: LandingNavbarProps) {
           )}
         </div>
       </div>
+
+      {/* Desktop Editorial Sub-Navigation Bar */}
+      <div className="hidden md:flex w-full max-w-7xl justify-between items-center pt-2 border-t border-[#E0C375]/20">
+        <nav className="flex items-center gap-6 text-xs font-bold uppercase tracking-widest text-slate-700 font-mono">
+          <a href="#about-us" className="hover:text-[#D92243] transition">About Us</a>
+          <span className="text-slate-300">•</span>
+          <a href="#how-it-works" className="hover:text-[#D92243] transition">How It Works</a>
+          <span className="text-slate-300">•</span>
+          <a href="#faq" className="hover:text-[#D92243] transition">FAQ</a>
+          <span className="text-slate-300">•</span>
+          <a href="#thoughts" className="hover:text-[#D92243] transition">Thoughts</a>
+          <span className="text-slate-300">•</span>
+          <a href="#contact" className="hover:text-[#D92243] transition">Contact Us</a>
+        </nav>
+      </div>
+
+      {/* Mobile Slide-Down Responsive Navigation */}
+      <AnimatePresence>
+        {isMobileMenuOpen && (
+          <motion.div
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: 'auto' }}
+            exit={{ opacity: 0, height: 0 }}
+            className="w-full md:hidden pt-3 border-t border-[#E0C375]/30 flex flex-col gap-3 font-mono text-xs font-bold uppercase"
+          >
+            <a href="#about-us" onClick={() => setIsMobileMenuOpen(false)} className="py-1 text-slate-700 hover:text-[#D92243]">About Us</a>
+            <a href="#how-it-works" onClick={() => setIsMobileMenuOpen(false)} className="py-1 text-slate-700 hover:text-[#D92243]">How It Works</a>
+            <a href="#faq" onClick={() => setIsMobileMenuOpen(false)} className="py-1 text-slate-700 hover:text-[#D92243]">FAQ</a>
+            <a href="#contact" onClick={() => setIsMobileMenuOpen(false)} className="py-1 text-slate-700 hover:text-[#D92243]">Contact Us</a>
+            
+            {isAuthenticated ? (
+              <div className="pt-2 border-t border-slate-200 flex flex-col gap-2">
+                <button onClick={() => { navigate('/profile'); setIsMobileMenuOpen(false); }} className="text-left py-1 text-[#D92243]">
+                  Profile ({user.name})
+                </button>
+                <button onClick={() => { logout(); navigate('/'); setIsMobileMenuOpen(false); }} className="text-left py-1 text-rose-600">
+                  Logout
+                </button>
+              </div>
+            ) : (
+              <Button variant="primary" size="sm" onClick={() => { navigate('/auth'); setIsMobileMenuOpen(false); }} className="w-full mt-2">
+                Sign In / Register
+              </Button>
+            )}
+          </motion.div>
+        )}
+      </AnimatePresence>
     </header>
   );
 }
